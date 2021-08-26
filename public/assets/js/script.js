@@ -1,4 +1,4 @@
-const pubdomName = document.querySelector("#pubdom_name").innerHTML;
+let pubdomName = document.querySelector("#pubdom_name").innerHTML;
 //let pubdomName = selPubdomName.innerText;
 
 //const selPd = document.querySelector('#selPD option[selected="selected"]')
@@ -16,7 +16,7 @@ console.log(pubdomName);
 
 let datastat = [];
 
-getRequest(pubdomName) ;
+getRequest();
 
 /*selAll.addEventListener('change', () => { 
 	pubdomName = selAll.value;
@@ -25,10 +25,9 @@ getRequest(pubdomName) ;
 });*/
 
 
-function getRequest(pd) {
-    //const requestJSON = 'https://stat.hostmaster.ua/get_capacity_json.php/?pd=' + pd;
-    //const requestJSON = 'https://stat.hostmaster.ua/stat_data/' + pd + '.json';
-    const requestJSON = 'https://raw.githubusercontent.com/SeraphimUA/domain_charts/main/'+ pd +'.json';
+function getRequest() {
+    const requestJSON = 'http://stats.test/pubdomCapacity/'+ pubdomName;
+    console.log("requestJSON: " + requestJSON);
     const request = new XMLHttpRequest();
 
     if (request) {
@@ -78,7 +77,7 @@ function getStats(k) {
         var data = google.visualization.arrayToDataTable(stat);
     
     var options = {
-        title: 'Кількість доменів',
+        title: 'Кількість доменів у ' + pubdomName,
         legend: 'none',
         chartArea:{bottom:100},
         hAxis: {format: 'yyyy-MM',
@@ -102,4 +101,10 @@ function getStats(k) {
     var chart = new google.visualization.LineChart(document.getElementById('chart_div'));
     chart.draw(data, options);
 }
+}
+
+function setPubdom(newDom) {
+    document.querySelector("#pubdom_name").innerHTML = newDom;
+    pubdomName = newDom;
+    getRequest();
 }

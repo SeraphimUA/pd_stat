@@ -18,18 +18,37 @@
                     $cap_sum = 0;
                     $perc_sum = 0;
                     $diff_sum = 0;
-                    foreach ($stat['stat'] as $d) {
-                        $row = "<tr>";
-                        $row .= "<td><a class='text-decoration-none' href='?p_host=" . $d['pubdom_name'] . "'>" . $d['pubdom_name'] . "</a></td>";
-                        $row .= "<td style='text-align: right;'>" . $d['capacity'] . "</td>";
-                        $cap_sum += $d['capacity'];
-                        $row .= "<td style='text-align: right;'>" . $d['perc'] . "</td>";
-                        $perc_sum += $d['perc'];
-                        $row .= "<td style='text-align: right;'>" . $d['diff'] . "</td>";
-                        $diff_sum += $d['diff'];
-                        $row .= "<td style='text-align: right;'>" . $d['pripost'] . "</td>";
-                        $row .= "</tr>";
-                        echo $row;
+                    if (isset($stat) && is_array($stat)) {
+                        foreach ($stat['stat'] as $d) {
+                            if ($d['pubdom_name'] === 'ua') {
+                                $row = "<tr>";
+                                $row .= "<td><a class='text-decoration-none' href='#' onClick=\"setPubdom('" . $d['pubdom_name'] . "')\">" . $d['pubdom_name'] . "</a></td>";
+                                $row .= "<td style='text-align: right;'>" . $d['capacity'] . "</td>";
+                                $cap_sum += $d['capacity'];
+                                $row .= "<td style='text-align: right;'>" . $d['perc'] . "</td>";
+                                $perc_sum += $d['perc'];
+                                $row .= "<td style='text-align: right;'>" . $d['diff'] . "</td>";
+                                $diff_sum += $d['diff'];
+                                $row .= "<td style='text-align: right;'>" . $d['pripost'] . "</td>";
+                                $row .= "</tr>";
+                                echo $row;
+                            }
+                        }
+                        foreach ($stat['stat'] as $d) {
+                            if ($d['pubdom_name'] !== 'ua') {
+                                $row = "<tr>";
+                                $row .= "<td><a class='text-decoration-none' href='#' onClick=\"setPubdom('" . $d['pubdom_name'] . "')\">" . $d['pubdom_name'] . "</a></td>";
+                                $row .= "<td style='text-align: right;'>" . $d['capacity'] . "</td>";
+                                $cap_sum += $d['capacity'];
+                                $row .= "<td style='text-align: right;'>" . $d['perc'] . "</td>";
+                                $perc_sum += $d['perc'];
+                                $row .= "<td style='text-align: right;'>" . $d['diff'] . "</td>";
+                                $diff_sum += $d['diff'];
+                                $row .= "<td style='text-align: right;'>" . $d['pripost'] . "</td>";
+                                $row .= "</tr>";
+                                echo $row;
+                            }
+                        }
                     }
                     ?>
                 </tbody>

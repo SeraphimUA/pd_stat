@@ -35,6 +35,7 @@ $routes->setAutoRoute(true);
 $routes->get('/', 'Home::index');
 $routes->get('{locale}', 'Language::index');
 $routes->post('/(:num)/(:num)', 'Home::index/$1/$2');
+$routes->get('/pubdomCapacity/(:segment)', 'Home::getDomCapacity/$1');
 
 /*
  * --------------------------------------------------------------------
