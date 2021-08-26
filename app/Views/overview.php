@@ -65,9 +65,14 @@
         </div>
         <div class="col">
             <h1 class="text-center"><span id="pubdom_name"><?= $p_host ?></span></h1>
+            <fieldset>
+                <button class="btn btn-sm btn-outline-info mb-3" id="select_all">Весь період</button>
+                <button class="btn btn-sm btn-outline-info mb-3" id="select_5">5 років</button>
+                <button class="btn btn-sm btn-outline-info mb-3" id="select_1">1 рік</button>
 
-            <div id="chart_div" style="width: 80%; min-width: 400px; height: 300px; margin: 0 auto;"></div>
-            <script src="<?= base_url('/assets/js/script.js') ?>"></script>
+                <div id="chart_div" style="width: 80%; min-width: 400px; height: 300px; margin: 0 auto;"></div>
+                <script src="<?= base_url('/assets/js/script.js') ?>"></script>
+            </fieldset>
         </div>
     </div>
 

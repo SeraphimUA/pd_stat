@@ -10,9 +10,9 @@ let pubdomName = document.querySelector("#pubdom_name").innerHTML;
 console.log(pubdomName);
 //console.log(selAll);
 
-//const button1 = document.getElementById('select_all');
-//const button2 = document.getElementById('select_5');
-//const button3 = document.getElementById('select_1');
+const button1 = document.getElementById('select_all');
+const button2 = document.getElementById('select_5');
+const button3 = document.getElementById('select_1');
 
 let datastat = [];
 
@@ -40,9 +40,9 @@ function getRequest() {
 	    getStats(0); 
 	}
 
-	/*button1.onclick = function () { getStats(0); };
+	button1.onclick = function () { getStats(0); };
 	button2.onclick = function () { getStats(5); };
-	button3.onclick = function () { getStats(1); };*/
+	button3.onclick = function () { getStats(1); };
     }
 }
 
@@ -58,15 +58,15 @@ function getStats(k) {
 
     tmp = datastat["stat"];
 
-    /*if (k == 5) {
+    if (k == 5) {
          temp_stats = tmp.slice(-60);
     } else if (k == 1) {
          temp_stats = tmp.slice(-12);
     } else {
          temp_stats = tmp;
-    }*/
+    }
 
-    tmp.forEach(element => {
+    temp_stats.forEach(element => {
         time = element["d_measure"].split("-");
         date = [parseInt(time[0]), parseInt(time[1])-1, parseInt(time[2])];
         stat.push([new Date(date[0], date[1], date[2]), element["capacity"]]);
